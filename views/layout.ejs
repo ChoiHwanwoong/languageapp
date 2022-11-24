@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LANGUAGEWEBSITE</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!--추가 스타일-->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!--좌측 메뉴 영역-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold">Language board</span>
+                                <span class="text-muted text-xs block">menu <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="/">Mainpage</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="/boards/list"><span class="nav-label">게시글 정보관리</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="/member/profile"></i> <span class="nav-label">회원정보 관리</span></a>
+                    </li>
+                    <li class="active" id = "signUpBtn">
+                    </li>
+                    <li class="active" id = "regBtn">
+                    </li>
+
+        
+                </ul>
+            </div>
+        </nav>
+
+        <!--우측 영역-->
+        <div id="page-wrapper" class="gray-bg">
+           
+        <!--우측 상단 영역 -->
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                            class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="#">
+                        <div class="form-group">
+                            <input type="text" placeholder="검색어를 입력해주세요." class="form-control"
+                                name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right" id="isLogin">
+                    <li id="loginResult"></li>
+                    <button class="btn btn-lg btn-primary" id="logout" onclick="logout()">Log Out</button>
+                </ul>
+        
+            </nav>
+        </div>
+
+        <!-- 개별 컨텐츠 표시 영역   -->
+        <%-body%>
+        
+        <!--우측 하단 풋터 영역-->
+        <div class="footer">
+            <div class="pull-right">
+                2022 Language
+            </div>
+
+            <div>
+                <strong>Language</strong> HW Soft &copy; 2022
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+
+    <!--추가 스크립트-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  
+    <%-script%>
+    
+    <script>
+        // 로그인 여부에 따른 로그인 버튼 표시 여부
+        if(sessionStorage.getItem('userId') == null) {
+            document.getElementById("loginResult").innerHTML = "<a href='/member/login'><i class='fa fa-sign-out'></i> Log In</a>";
+            document.getElementById("signUpBtn").innerHTML = "<a href='/member/entry'></i> <span class='nav-label'>회원 가입</span></a>";
+            
+            document.getElementById("logout").style.visibility = "hidden";
+        }
+        else {
+            document.getElementById("loginResult").innerHTML= "<h4>"+ sessionStorage.getItem('userId') + "님 </h4>";
+            document.getElementById("signUpBtn").innerHTML = "";
+            document.getElementById("regBtn").innerHTML = "<a href='/boards/create'></i> <span class='nav-label'>게시글 등록</span></a>";
+            
+        }
+        function logout() {
+            sessionStorage.clear();
+            location.reload();
+        }
+        
+    </script>
+
+
+</body>
+
+</html>

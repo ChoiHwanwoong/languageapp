@@ -1,0 +1,107 @@
+
+            <!--우측 콘텐츠 헤더영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>게시글 수정</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home</a> 
+                        </li>
+                        <li>
+                            <a>   |   영어게시판 게시글   |   </a> 
+                        </li>
+                        <li class="active">
+                            <strong>게시글수정</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+                <div class="ibox-content m-b-sm border-bottom">
+
+                    <form id="modifyform" method="post" action="/boards/modify">
+                        
+                        
+                        
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">TEXTBOX</label>
+                                    <input type="text" name="title" id="title" value="<%=article.title%>" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">TEXTAREA</label>
+                                    <textarea name="contents" id="contents" class="form-control" rows="10" cols="5"><%=article.contents%></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a id="filename"></a>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" id="saveBtn">저장</button>
+                            <a href="/boards/list" class="btn btn-info">목록</a>
+                            <a href="/boards/delete?idx=<%=article.article_idx%>" class="btn btn-danger" id="delBtn">삭제</a>
+                            <input type="hidden" value="<%=article.article_idx%>" name="articleIdx">
+                        </div>
+
+                        
+
+                    </form>
+
+                </div>
+            </div>
+
+
+
+            
+            <script>
+
+                //html요소가 웹브라우저에 모두 렌더링 완료되면 실행되는 메소드ready()
+                $(document).ready(function(){
+                    console.log("페이지가 모두 로딩되었습니다.");
+                    var owner = '<%=article.regist_userid%>';
+                    console.log(owner, sessionStorage.getItem('userId'));
+                    if(owner != sessionStorage.getItem('userId')) {
+                        document.getElementById('title').readOnly=true;       
+                        document.getElementById('contents').readOnly=true;
+                        document.getElementById('saveBtn').style.visibility = "hidden";
+                        document.getElementById('delBtn').style.visibility = "hidden";
+                    }
+                    document.getElementById("filename").innerHTML = "첨부 파일 : " + '<%=article.file_name%>';
+                    $("#filename").attr('href', '/boards/download/<%=article.file_name%>')
+                });
+
+                //서버로 전달하기전에 입력값 유효성 검사 처리하기  
+                $("#modifyform").submit(function(){
+
+                    if($("#title").val() == ""){
+                        alert("제목을 입력해주세요.");
+                        $("#title").focus();
+                        return false;
+                    }
+
+                    if($("#contents").val() == ""){
+                        alert("내용을 입력해주세요.");
+                        $("#contents").focus();
+                        return false;
+                    }
+
+                    //서버로 입력 데이터를 전송합니다.
+                    return true;
+                });
+
+
+            </script>
+

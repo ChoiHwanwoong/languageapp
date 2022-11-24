@@ -1,0 +1,25 @@
+
+
+sudo mkdir -p -- /var/www /var/www/nodeblogapp
+
+sudo mkdir -p -- /var/www/nodeblogapp
+
+sudo chmod 777 /var/www/nodeblogapp
+
+cd /var/www/nodeblogapp
+
+pm2 start www --name nodeblogapp
+
+server {
+  listen 80;
+  server_name   test5.webrtcmaker.co.kr;
+
+  location / {
+  proxy_pass http://172.31.41.131:3001;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection $http_connection;
+  proxy_set_header Host $http_host;
+  proxy_cache_bypass $http_upgrade;
+  }
+}

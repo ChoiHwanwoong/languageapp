@@ -1,0 +1,64 @@
+<style>
+    .navbar-static-top{
+        display: none;
+    }
+    .white-bg{
+        display: none;
+    }
+    .navbar-static-side{
+        display: none;
+    }
+    #page-wrapper{
+        width: 100%;
+    }
+
+</style>
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">IN+</h1>
+
+            </div>
+            <h3>회원가입 페이지</h3>
+            <a href="/">메인화면으로 돌아가기</a>
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            
+            <form id="loginForm" class="m-t" role="form" action="/member/entry" method="post">
+                <div class="form-group">
+                    <input type="text"id="userid" name="userid" class="form-control" placeholder="아이디(메일주소)">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="userpwd" name="userpwd"class="form-control" placeholder="암호">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="userpwdconfirm" name="userpwdconfirm"class="form-control" placeholder="암호확인">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="username" name="username"class="form-control" placeholder="이름">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="userphone" name="userphone"class="form-control" placeholder="전화번호">
+                </div>
+             
+                <button type="submit" class="btn btn-primary block full-width m-b">회원가입</button>
+
+                
+                
+            </form>
+            <p class="m-t"> <small>Languagewebsite&copy; 2022</small> </p>
+        </div>
+    </div>
+    <script>
+
+        //회원가입 버튼이 클릭될때 유효성 검사....
+        $("#entryForm").submit(function(){
+        
+            //유효성검사 코드 정의 
+            return true;
+        
+        });
+        
+        
+        </script>

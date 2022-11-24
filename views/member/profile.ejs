@@ -1,0 +1,41 @@
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">IN+</h1>
+
+            </div>
+            <h3>회원정보 관리</h3>
+            <a href="/">메인화면으로 돌아가기</a>
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            
+            <form id="loginForm" class="m-t" role="form" action="/member/entry" method="post">
+    <div class="form-group">
+    아이디(메일주소): <input type="text" id="userid" name="userid" value="<%=userData.userId%>"/> <br>
+    </div>
+    <div class="form-group">
+    암호:<input type="password" id="userpwd" name="userpwd"/> <br>
+    </div>
+    <div class="form-group">
+    암호확인:<input type="password" id="userpwdconfirm" name="userpwdconfirm"/> <br>
+    </div>
+    <div class="form-group">
+    이름:<input type="text" id="username" name="username" value="<%=userData.userName%>"/> <br>
+    </div>
+    <div class="form-group">
+    전화번호:<input type="text" id="userphone" name="userphone"/> <br>
+    </div>
+    
+             
+                <button type="submit" class="btn btn-primary block full-width m-b">회원정보수정</button>
+
+                
+                
+            </form>
+            <p class="m-t"> <small>Languagewebsite&copy; 2022</small> </p>
+        </div>
+    </div>
+
+        
